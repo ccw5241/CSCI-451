@@ -13,9 +13,9 @@ public class Zalgorithm {
 		
 	}
 	
-	// Don't use this one.
-	public void zCase2(int positionK, int positionR, int positionL, String s, int[] Z){	// if positionK < positionR
-		int k = positionK,
+	
+	public void zCase2(int positionI, int positionR, int positionL, String s, int[] Z){	// if positionK < positionR
+		int i = positionI,
 			r = positionR,
 			l = positionL;
 		
@@ -29,9 +29,9 @@ public class Zalgorithm {
 		 * 	k++, we don't need a comparision, we already know its value, so move on
 		 * 
 		 */
-		if(Z[k-l] < (r-k) ){	// if we stay to the left of r inside the zBox
-			Z[k] = Z[k-l];		// we already know this Z value
-			k++;				// check the next k position
+		if(Z[i-l] < (r-i) ){	// if we stay to the left of r inside the zBox
+			Z[i] = Z[i-l];		// we already know this Z value
+			i++;				// check the next k position
 		}
 		
 		/*
@@ -48,16 +48,16 @@ public class Zalgorithm {
 		 * 	positionL = positionK
 		 * 	positionR = tChar + 1
 		 */
-		else if(Z[k-l] >= (r-k)){	// if we go past the known area aka zBox
-			Z[k] = Z[k-l];			// get the known Z value for now to add to later.
-			int i = k-l;			// i = k` ie. the position in the search string that matches to k
-			while(s.charAt(i) == s.charAt(r)){	// while they match
-				i++;							// increment and compare again
+		else if(Z[i-l] >= (r-i)){	// if we go past the known area aka zBox
+			Z[i] = Z[i-l];			// get the known Z value for now to add to later.
+			int k = i-l;			// i = k` ie. the position in the search string that matches to k
+			while(s.charAt(k) == s.charAt(r)){	// while they match
+				k++;							// increment and compare again
 				r++;							// and push r forward
 			}
-			l = k;	// now that we've found a mismatch, readjust everything to start again
-			Z[k] = i;	// Add however far we traveled to Z[k].
-			k++;	
+			l = i;	// now that we've found a mismatch, readjust everything to start again
+			Z[i] = k;	// Add however far we traveled to Z[k].
+			i++;	
 		}
 	}	
 	//  Z array for given string str[]
@@ -99,12 +99,13 @@ public class Zalgorithm {
 	           // then Z[i] will be equal to Z[k].
 	           // For example, str = "ababab", i = 3, R = 5
 	           // and L = 2
-	           if (Z[k] < R-i+1)	// Case 2A
+	           if (Z[k] < R-i+1){	// Case 2A
 	                Z[i] = Z[k];
-	           // Exact Match Checking
-	           if(Z[i] == patternLength){
-	        	   System.out.println("exact match found at:  " + i);
-	           }
+	                // Exact Match Checking
+	                if(Z[i] == patternLength){
+	 	        	   System.out.println("exact match found at:  " + i);
+	 	            }
+	           }	           
 	           // For example str = "aaaaaa" and i = 2, R is 5,
 	           // L is 0
 	           else	// Case 2B

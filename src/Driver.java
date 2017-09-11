@@ -14,8 +14,9 @@ public class Driver {
 	{
 		// Stuff will go into here.
 		String a, b;
-		a = "gqc";
-		b = "jqegqccaukqs";
+		a = "aba";
+		b = "ababaccccaba";
+		// Expected Matches Found At: 4, 5, 13
 		
 		Zalgorithm DoIt = new Zalgorithm(a, b);
 	}
