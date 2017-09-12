@@ -13,6 +13,26 @@ public class Zalgorithm {
 		
 	}
 	
+	public void zCase1(int positionK, int positionR, int positionL, String s, int Z[]){
+		int n = s.length();
+		int L = positionL;
+		int R = positionR;
+		int k = positionK;
+
+		L = R = 0;
+
+		for (int i =1; i< n ; i++)
+		{
+			if (i>R)
+			{
+				L = R =i;
+				while(R<n && S[R - L] == S[R]);
+				R++;
+				Z[i] = R-L;
+			}
+		}
+	}
+	
 	
 	public void zCase2(int positionI, int positionR, int positionL, String s, int[] Z){	// if positionK < positionR
 		int i = positionI,
